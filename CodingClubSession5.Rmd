@@ -1,0 +1,117 @@
+---
+title: 'Coding club @ SoPVS: Intro to R MarkDown'
+author: "David Souto"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Intro to R Markdown
+
+An R MarkDown document can be a good way of generating html code explaining some point of data analysis, which you later post online. In this next sessions we are going to cover how to go from using R Markdown to format text, embed code and figures and then put it online with GitHub. 
+
+We will put this document online to show you how it is done, but it is actually meant to be followed in its R Markdown version for once.
+
+## Getting started
+
+Let R-Studio do the work of installing necessary packages by creating a R MarkDown file with "File > New File > R Mardown ..."
+
+Note that on top we have fixed fields, it is a YAML header. You can see that it doesnt accept other fields. You need to remove or keep as it is.
+
+Hit the **Knit** button on R-Studio, then Knit to HTML to generate an html document that we can then post online. 
+
+## Including Plots
+
+Let's stat with embedding our first piece of code. The code is defined within the triple ``` ` ```s, wheras ```{r }``` contains parameters.  
+
+This is a minimal example. It just allows you to display the text plot(pressure) in the code font.
+
+```
+plot(pressure)
+```
+The echo parameter avoids printing the code that generated the output - quite overkill since it is there.
+Note that it can be quicker to use the cogwheel on the right hand side to set those options.
+
+```{r }``` means that we are executing the r code inbetween.
+
+You can insert code chunks quickly with shortcuts Ctrl + Alt + I (OS X: Cmd + Option + I).
+
+``` include = FALSE ``` means the code and results are not appearing (you want this for e.g. including stuff to run behind the scenes, like the ``` setup ```  at the very top).
+
+``` echo = FALSE ``` means we are not displaying the code and output in the html page. Same thing for ```warning``` or ```message``` or ```fig.cap``` which allow you to control whether a caption is added to the figures.
+
+Note that elements that exist in one chunk will be carried to another. So we can load ggplot in one chunk. And use the diamonds dataset in the other. Let's try:
+
+```{r, echo=TRUE}
+library(ggplot2)
+```
+
+```{r, fig.cap = "My plot caption", echo=TRUE}
+ggplot(diamonds,aes(carat,cut))
+```
+
+# Text formatting options. 
+
+# Including links
+
+This can be done quite simply by putting your link label in square brackets followed by the link in parenthesis: [this is the link explaning why Ctrl+Alt+I doesn't always work](https://stackoverflow.com/questions/42785311/keyboard-shortcut-for-code-chunk-in-r-markdown-for-windows-gives-%C3%AD)
+
+## This the title for a subsection
+### For a sub-subsection
+#### And so forth
+
+* Bullet lists work as expected
+- That too is a bullet
+1. Numbered list as well
+2. Number list, second element
+
+# Making tables
+APA specifies a format for tables. There are packages that facilitate this, including for MarkDown docs.
+
+Let me knwo if you have other tricks. I found [this](https://rempsyc.remi-theriault.com/articles/table) to be quite handy.
+
+Start by ```install.packages(apaTables)``` in the Console. People make lots of errors when reporting outputs to a table. apaTables has lots of options, to many to go into, see [here](https://dstanley4.github.io/apaTables/articles/apaTables.html) generating a table and saving it to word can avoid some of those mistakes.
+
+```{r, echo=false}
+
+library(apaTables)
+apa.cor.table(attitude, filename="Table1_APA.doc", table.number=1)
+
+```
+
+
+If you don't care about APA, use the kable function
+
+```{r, fig.cap = "My plot caption", echo=TRUE}
+library(knitr)
+kable(diamonds[1:5,],caption="Knittr table")
+```
+
+
+```{r, fig.cap = "My plot caption", echo=TRUE}
+ggplot(diamonds,aes(carat,cut))
+```
+
+
+# What do I do with this?
+Now you don't want to share this file with people, you want to host it somewhere and share an html link to see the "knitted" version. Since you can use GitHub pro with as a student or staff (or even with the free version I believe) you can use it to host that page. This is convenient because you can then use a repository for the code and use that repository to put the html page that complements it. Or maybe you just want to use it to host html pages. 
+
+It is not difficult but it takes a few steps. This is explained very nicely [here](https://mbounthavong.com/blog/2022/7/30/hosting-a-r-markdown-html-file-on-a-github-page) and we'll go through it live. 
+
+Using the desktop app of Github takes some time to get used to but can be worth if: 1/ your code is complicated and wnat to be able to easily revert to previous versions when things get hairy (version control) 2/ there is going to be several people working on the code and want a way of merging different contributions, pretty much as you'll do with a shared word document with track changes. This assumes everyone is onboard with using teh same tools. 
+
+If you only want to share the code at the end of the project via GitHub you can simply upload your code online. The advantage is that it makes your code retrievable. It is easier to get proof of impact as people can branch and watch your code or identify issues in the code to be fixed (by you or somebody else).
+
+# The nitty-gritty
+
+There is a ```{r setup, include=FALSE}``` on top of the R markdown file, what does this mean? As usual use the editor contextual menu to learn more e.g. ```knittr::``` or ```?knitr::opts_chunk$set``` to see examples you can run. This particular option allows you to set global options for chunks. For instance, lets set ```echo``` to ```false``` in  ```knitr::opts_chunk$set(echo = FALSE)```. You have other useful options such as caching computations so you don't do it all anew. Handy for large docs.
+
+If I add the option parameters on top, with ```params: ```, I can now define a data file for instance. This data
+can then be accessed with ```params$```
+
+I am not sure you'll ever use this, but you could have an R markdown file that takes parameters, such as applying the same analysis to a different dataset. In that case you could define file parameters. Perhaps if you often get data of the same format accross experiments.
+
+License: CC-BY-SA 4.0 
