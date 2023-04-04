@@ -107,7 +107,7 @@ If you only want to share the code at the end of the project via GitHub you can 
 
 # The nitty-gritty
 
-There is a ```{r setup, include=FALSE}``` on top of the R markdown file, what does this mean? As usual use the editor contextual menu to learn more e.g. ```knittr::``` or ```?knitr::opts_chunk$set``` to see examples you can run. This particular option allows you to set global options for chunks. For instance, lets set ```echo``` to ```false``` in  ```knitr::opts_chunk$set(echo = FALSE)```. You have other useful options such as caching computations so you don't do it all anew. Handy for large docs.
+There is a ```{r setup, include=FALSE}``` on top of the R markdown file, what does this mean? As usual use the editor contextual menu to learn more e.g. ```knittr::``` or ```?knitr::opts_chunk``` to see examples you can run. This particular option allows you to set global options for chunks. For instance, lets set ```echo``` to ```false``` in  ```knitr::opts_chunk$set(echo = FALSE)```. You have other useful options such as caching computations so you don't do it all anew. Handy for large docs.
 
 If I add the option parameters on top, with ```params: ```, I can now define a data file for instance. This data
 can then be accessed with ```params$```
