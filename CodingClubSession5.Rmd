@@ -78,12 +78,12 @@ Start by ```install.packages("apaTables")``` in the Console. People make lots of
 ```{r, echo=false}
 
 library(apaTables)
-apa.cor.table(attitude, filename="Table1_APA.doc", table.number=1)
+apa.cor.table(attitude, filename="Table1_APA.doc", table.number=1) 
+# check the folder to see the very neat output
 
 ```
 
-
-If you don't care about APA, use the kable function
+If you don't care about APA (OMG), use the kable function
 
 ```{r, fig.cap = "My plot caption", echo=TRUE}
 library(knitr)
@@ -94,7 +94,6 @@ kable(diamonds[1:5,],caption="Knittr table")
 ```{r, fig.cap = "My plot caption", echo=TRUE}
 ggplot(diamonds,aes(carat,cut))
 ```
-
 
 # What do I do with this?
 Now you don't want to share this file with people, you want to host it somewhere and share an html link to see the "knitted" version. Since you can use GitHub pro with as a student or staff (or even with the free version I believe) you can use it to host that page. This is convenient because you can then use a repository for the code and use that repository to put the html page that complements it. Or maybe you just want to use it to host html pages. 
