@@ -73,7 +73,7 @@ APA specifies a format for tables. There are packages that facilitate this, incl
 
 Let me knwo if you have other tricks. I found [this](https://rempsyc.remi-theriault.com/articles/table) to be quite handy.
 
-Start by ```install.packages(apaTables)``` in the Console. People make lots of errors when reporting outputs to a table. apaTables has lots of options, to many to go into, see [here](https://dstanley4.github.io/apaTables/articles/apaTables.html) generating a table and saving it to word can avoid some of those mistakes.
+Start by ```install.packages("apaTables")``` in the Console. People make lots of errors when reporting outputs to a table. apaTables has lots of options, to many to go into, see [here](https://dstanley4.github.io/apaTables/articles/apaTables.html) generating a table and saving it to word can avoid some of those mistakes.
 
 ```{r, echo=false}
 
