@@ -47,6 +47,8 @@ Note that elements that exist in one chunk will be carried to another. So we can
 
 ```{r, echo=TRUE}
 library(ggplot2)
+
+
 ```
 
 ```{r, fig.cap = "My plot caption", echo=TRUE}
@@ -75,7 +77,7 @@ Let me knwo if you have other tricks. I found [this](https://rempsyc.remi-theria
 
 Start by ```install.packages("apaTables")``` in the Console. People make lots of errors when reporting outputs to a table. apaTables has lots of options, to many to go into, see [here](https://dstanley4.github.io/apaTables/articles/apaTables.html) generating a table and saving it to word can avoid some of those mistakes.
 
-```{r, echo=false}
+```{r, echo=TRUE}
 
 library(apaTables)
 apa.cor.table(attitude, filename="Table1_APA.doc", table.number=1) 
